@@ -6,8 +6,8 @@ var http = require('http');
 
 describe('VeBnB', function() {
   before(function() {
-    this.server = http.createServer(app).listen(3000);
-    this.browser = new Browser({ site: 'http://localhost:3000' });
+    this.server = http.createServer(app).listen(8080);
+    this.browser = new Browser({ site: 'http://localhost:8080' });
   });
 
   describe('home page', function() {
@@ -39,7 +39,9 @@ describe('VeBnB', function() {
       });
     });
 
-
+	after(function(done) {
+		this.server.close(done);
+	});
 
 
 });

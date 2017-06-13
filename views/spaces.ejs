@@ -6,6 +6,9 @@
 
   <body>
     <h1><%= title %></h1>
-    <p><%= addresses %></p>
+		<ul><% addresses.forEach(function(address) { %>
+			<li> <%= address %> </li>
+			<% }) %>
+		</ul>
   </body>
 </html>
