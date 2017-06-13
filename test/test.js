@@ -45,12 +45,23 @@ describe('VeBnB', function() {
 						this.browser.fill("#address", "FakeStreet 22");
 						this.browser.document.forms[0].submit();
 						this.browser.wait().then(function() {
-							console.log('Form submitted ok');
 							browser.viewInBrowser();
 						});
 				});
 			});
 		});
+
+		/*describe('inserts listings', function() {
+			before(function(done) {
+				this.browser.visit('/', done)
+				this.browser.fill('address', 'FakeStreet 22').pressButton('Enter', done);
+			});
+
+			it('', function() {
+				this.browser.assert.success();
+			});
+		});
+		*/
 
 	after(function(done) {
 		this.server.close(done);
