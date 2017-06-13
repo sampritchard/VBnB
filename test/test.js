@@ -19,6 +19,10 @@ describe('contact page', function() {
     this.browser.assert.success();
   });
 
+  it('should have content', function() {
+    this.browser.assert.text('title', 'VeBnB');
+  });
+
 
 
 
