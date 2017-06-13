@@ -1,3 +1,11 @@
+Packages used:
+- body-parser (to receive post requests)
+- chai
+- express (as usable framework around the node server)
+- ejs (for HTML)
+- mocha (for feature testing)
+- zombie (for feature testing) - in devDependencies
+
 1.
 ```
 As an Owner,
