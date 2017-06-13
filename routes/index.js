@@ -11,6 +11,10 @@ router.get('/spaces', function(req, res) {
 	res.render('spaces', { title: 'Listings', addresses: addresses});
 });
 
+router.get('/confirm', function(req, res) {
+	res.render('confirm', { title: 'Confirmation'});
+});
+
 router.post('/spaces', function(req, res) {
 	var address = req.body.address;
 	addresses.push(address);

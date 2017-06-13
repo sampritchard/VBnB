@@ -34,8 +34,15 @@ describe('VeBnB', function() {
         this.browser.assert.success();
       });
 
-      it('should have content', function() {
-        this.browser.assert.text('body', 'Listings');
+      it('has a request button', function() {
+        this.browser.assert.text('button', 'Request');
+      });
+
+      
+      it('the request button sends to a confirmation page', function() {
+          this.browser.pressButton('Request').then(function(){
+            assert.text('body', 'Your request has been submitted');
+          })
       });
     });
 
