@@ -23,6 +23,7 @@ describe('VeBnB', function() {
       this.browser.assert.text('title', 'VeBnB');
     });
 
+
   });
 
     describe('listings page', function() {
@@ -38,7 +39,9 @@ describe('VeBnB', function() {
         this.browser.assert.text('button', 'Request');
       });
 
-      
+
+
+
       it('the request button sends to a confirmation page', function() {
           this.browser.pressButton('Request').then(function(){
             assert.text('body', 'Your request has been submitted');
