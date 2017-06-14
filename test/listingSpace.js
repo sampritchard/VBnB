@@ -1,13 +1,10 @@
 //var assert = require('assert')
 var mongoose = require('mongoose')
 var chai = require('chai')
-//var chaiChange = require('chai-change')
 var Space = require('../models/space').Space;
 var expect = chai.expect;
-//chai.use(chaiChange);
 
 describe('Spaces', function() {
-
 	before((done)=>{
 		mongoose.createConnection('mongodb://localhost/test_2');
 		mongoose.connection
@@ -24,7 +21,6 @@ describe('Spaces', function() {
 	});
 
 	describe('Creating space', ()=>{
-			
 		it('saves a space', (done) => {
 			var space = new Space({address: 'Fake 22'})	
 			space.save()
