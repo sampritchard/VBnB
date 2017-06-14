@@ -6,9 +6,13 @@
 
   <body>
     <h1><%= title %></h1>
+    <form method="get" action="/confirm">
 		<ul><% addresses.forEach(function(address) { %>
-			<li> <%= address %> </li>
+			<li> <%= address %>
+       <button type=submit>Choose</button>
 			<% }) %>
 		</ul>
+
+    </form>
   </body>
 </html>
