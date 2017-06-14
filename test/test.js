@@ -39,7 +39,19 @@ describe('VeBnB', function() {
       });
     });
 
-	after(function(done) {
+		describe('insert listings', function() {
+			it('should be able to insert a listing', function() {
+				this.browser.visit('/', function() {
+						this.browser.fill("#address", "FakeStreet 22");
+						this.browser.document.forms[0].submit();
+						this.browser.wait().then(function() {
+							browser.viewInBrowser();
+						});
+				});
+			});
+		});
+
+		after(function(done) {
 		this.server.close(done);
 	});
 
