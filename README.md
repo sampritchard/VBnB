@@ -1,10 +1,15 @@
 Packages used:
-- body-parser (to receive post requests)
-- chai
-- express (as usable framework around the node server)
-- ejs (for HTML)
-- mocha (for feature testing)
-- zombie (for feature testing) - in devDependencies
+- Database Stucture
+    MongoDB
+    Mongoose
+- Testing
+    - Chai
+    - Mocha
+    - Zombie
+- Server
+  - Express
+  - Body-Parser
+  - EJS (for HTML files)
 
 1.
 ```

@@ -22,6 +22,10 @@ router.get('/spaces', function(req, res, next) {
 		console.log(3);
 });
 
+router.get('/confirm', function(req, res) {
+	res.render('confirm', { title: 'Confirmation'});
+});
+
 router.post('/spaces', function(req, res) {
 	var addressNew = req.body.address;
   var temp = new Space({address: addressNew});
