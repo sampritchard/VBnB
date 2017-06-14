@@ -15,9 +15,6 @@ router.get('/spaces', function(req, res, next) {
       addresses.push(space.address);
      })
   }).then(function(data) {
-		Space.count({}, function(err, c) {
-      console.log(c)
-	  });
 		res.render('spaces', { title: 'Listings', addresses: addresses});
 	}).catch(next);
 });
