@@ -13,13 +13,10 @@ router.get('/spaces', function(req, res, next) {
   Space.find({}, function(err,spaces) {
     spaces.forEach(function(space) {
       addresses.push(space.address);
-			console.log(1)
      })
   }).then(function(data) {
 		res.render('spaces', { title: 'Listings', addresses: addresses});
-		console.log(2)
 	}).catch(next);
-		console.log(3);
 });
 
 router.get('/confirm', function(req, res) {
