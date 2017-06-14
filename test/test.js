@@ -54,6 +54,7 @@ describe('VeBnB', function() {
     before(function(done) {
       this.browser.visit('/spaces', done);
     });
+	
 
     it('should be successful', function() {
       this.browser.assert.success();
