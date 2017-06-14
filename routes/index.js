@@ -2,22 +2,24 @@ var express = require('express');
 var router = express.Router();
 var Space = require("../models/space").Space;
 
-addresses = [];
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'VeBnB' });
 });
 
-router.get('/spaces', function(req, res) {
-    Space.find({}, function(err,spaces) {
-      spaces.forEach(function(space) {
-        console.log(space);
-        console.log(space.address);
-        addresses.push(space.address);
-      });
-    console.log(addresses);
-  });
-	res.render('spaces', { title: 'Listings', addresses: addresses});
+router.get('/spaces', function(req, res, next) {
+	addresses = [];
+  Space.find({}, function(err,spaces) {
+    spaces.forEach(function(space) {
+      addresses.push(space.address);
+			console.log(1)
+     })
+  }).then(function(data) {
+		res.render('spaces', { title: 'Listings', addresses: addresses});
+		console.log(2)
+	}).catch(next);
+		console.log(3);
 });
 
 router.post('/spaces', function(req, res) {
