@@ -9,11 +9,10 @@
     <form method="get" action="/confirm">
 		<ul><% addresses.forEach(function(address) { %>
 			<li> <%= address %>
-       <input type="radio" id="a" value="a"></li>
+       <button type=submit>Choose</button>
 			<% }) %>
 		</ul>
 
-    <button type=submit>Request</button>
     </form>
   </body>
 </html>
