@@ -13,6 +13,7 @@ router.get('/spaces', function(req, res, next) {
   Space.find({}, function(err,spaces) {
     spaces.forEach(function(space) {
       addresses.push(space.address);
+			console.log(space)
      })
   }).then(function(data) {
 		res.render('spaces', { title: 'Listings', addresses: addresses});
@@ -24,8 +25,10 @@ router.get('/confirm', function(req, res) {
 });
 
 router.post('/spaces', function(req, res) {
-	var addressNew = req.body.address;
-  var temp = new Space({address: addressNew});
+  var temp = new Space({name: req.body.name,
+												address: req.body.address,
+												price: req.body.price,
+												description: req.body.description});
   temp.save(function(err) {
     if (err) return handleError(err);
   });

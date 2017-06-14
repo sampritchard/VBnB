@@ -8,8 +8,11 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <form action='/spaces' method='post'>
-				<label for='address'> Please enter your address:
+				<label for='address'> Please enter the space you want to list:
+					<input type='text' name='name'>
 					<input type='text' name='address'>
+					<input type='number' name='price'>
+					<input type='text' name='description'>
 					<button type=submit>Enter</button>
 				</label>
 			</form>
