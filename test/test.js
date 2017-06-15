@@ -11,6 +11,33 @@ describe('VeBnB', function() {
     this.browser = new Browser({ site: 'http://localhost:8080' });
   });
 
+  describe ('sign up', function() {
+    before(function(done) {
+      this.browser.visit('/signup', done);
+    })
+
+    it('should be successful', function() {
+      this.browser.assert.success();
+    });
+
+    it('should have content', function() {
+      this.browser.assert.text('title', 'Sign Up');
+    });
+
+    it('should have an Sign Up button',function() {
+      this.browser.assert.text('button', 'Sign Up');
+    });
+
+    it('after Sign Up, redircets to listings page', function() {
+      before(function(done) {
+        this.browser.fill('username', 'Sam').then(function(){
+          this.browser.pressButton('Sign Up')
+        });
+        this.browser.assert.text('text', 'Listings')
+      });
+    });
+  });
+
   describe('home page', function() {
     before(function(done) {
       this.browser.visit('/', done);
@@ -54,7 +81,7 @@ describe('VeBnB', function() {
     before(function(done) {
       this.browser.visit('/spaces', done);
     });
-	
+
 
     it('should be successful', function() {
       this.browser.assert.success();
