@@ -3,13 +3,15 @@ var app = require('../app');
 var Browser = require('zombie');
 var http = require('http');
 var mongoose = require('mongoose')
+var chai = require('chai')
+var expect = chai.expect;
 
 describe('VeBnB', function() {
-	beforeEach((done)=>{
+	/*beforeEach((done)=>{
 		mongoose.connection.collections.spaces.drop(()=>{
 			done();
 			});
-	});
+	});*/
 
   before(function() {
     this.server = http.createServer(app).listen(8080);
@@ -70,12 +72,17 @@ describe('VeBnB', function() {
 										.fill('address', 'SmoochStreet 22')
 										.fill('price', 20)
 										.fill('description', 'for young and old')
-										.pressButton('Enter', done);
+				this.browser.pressButton('Enter', done);
 			});
-
+			
+						
 			it('has name text', function() {
-        this.browser.assert.text('ul', 'Name: Love Shack at SmoochStreet 22 (£20) Description: for young and old Choose')
-      });
+        var pageBody = this.browser.text();
+				expect(pageBody).to.have.string('Love Shack')
+				expect(pageBody).to.have.string('SmoochStreet 22')
+				expect(pageBody).to.have.string('20')
+				expect(pageBody).to.have.string('for young and old')
+			});
     }); 
 	});
 
