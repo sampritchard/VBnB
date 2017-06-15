@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include ./layout %>
   </head>
 
   <body>
+
+      <% include ./header %>
+
     <h1><%= title %></h1>
     <form method="get" action="/confirm">
 		<ul><% spaces.forEach(function(space) { %>

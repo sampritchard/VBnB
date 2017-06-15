@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <% include ./layout %>
+  </head>
+  <body>
+    <% include ./header %><br>
+    <%= title %>
+    <form action='/spaces' method='post'>
+				<label for='signup'> Please create a username:
+					<input type='text' name='username'>
+					<button type=submit>Sign Up</button>
+				</label>
+			</form>
+  </body>
+</html>
