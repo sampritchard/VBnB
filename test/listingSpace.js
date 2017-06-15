@@ -37,7 +37,10 @@ describe('Spaces', function() {
 
 	describe('Creating space', ()=>{
 		it('saves a space with an address', (done) => {
-			var space = new Space({name: 'The Best Place', description: "Pretty", price: 40, address: 'Fake 22'})
+			var space = new Space({name: 'The Best Place',
+														 description: "Pretty",
+														 price: 40,
+														 address: 'Fake 22'})
 			space.save()
 				.then(function() {
 					Space.find({}, function(err, spaces) {
