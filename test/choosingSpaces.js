@@ -1,12 +1,12 @@
-//var assert = require('assert')
 var mongoose = require('mongoose')
 var chai = require('chai')
 var Space = require('../models/space').Space;
 var expect = chai.expect;
 
-describe('Spaces', function() {
+
+describe('Booking', function() {
 	// before((done)=>{
-	// 	mongoose.createConnection('mongodb://localhost/test_2');
+	// 	mongoose.createConnection('mongodb://localhost/test_3');
 	// 	mongoose.connection
 	// 		.once('open', ()=>{ done(); })
 	// 		.on('error', (error)=> {
@@ -14,21 +14,20 @@ describe('Spaces', function() {
 	// 		});
 	// });
 
-	beforeEach((done)=>{
-		mongoose.connection.collections.spaces.drop(()=>{
-			done();
-			});
-	});
+  beforeEach((done)=>{
+    mongoose.connection.collections.spaces.drop(()=>{
+      done();
+      });
+  });
 
-	describe('Creating space', ()=>{
-		it('saves a space with an address', (done) => {
+
+  describe('Booking a space', ()=>{
+		it('has a default value of booked equals false', (done) => {
 			var space = new Space({name: 'The Best Place', price: 40, address: 'Fake 22'})
 			space.save()
 				.then(function() {
 					Space.find({}, function(err, spaces) {
-						expect(spaces[0].address).to.equal('Fake 22')
-						expect(spaces[0].name).to.equal('The Best Place')
-						expect(spaces[0].price).to.equal(40)
+            expect(spaces[0].booked).to.equal(false)
 						done();
 					});
 				});

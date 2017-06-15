@@ -5,7 +5,8 @@ var spaceSchema = new Schema({
   name: String,
   description: String,
   price: Number,
-  address: String
+  address: String,
+  booked:  { type: Boolean, default: false }
 })
 
 var Space = mongoose.model('Space', spaceSchema);
