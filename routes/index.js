@@ -6,7 +6,7 @@ var User = require("../models/user").User;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'VeBnB', user: 'Sam' });
+  res.render('index', { title: 'VeBnB', user: 'Sakitalotte' });
 });
 
 router.get('/spaces', function(req, res, next) {
@@ -18,12 +18,12 @@ router.get('/spaces', function(req, res, next) {
       };
      })
 	}).then(function(spaces) {
-			res.render('spaces', { title: 'Listings', spaces: spaces, user: 'Sam'}); 
+			res.render('spaces', { title: 'Listings', spaces: spaces, user: 'Sakitalotte'});
 	}).catch(next);
 });
 
 router.get('/confirm', function(req, res) {
-	res.render('confirm', { title: 'Confirmation', user: 'Sam'});
+	res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
 });
 
 router.post('/spaces', function(req, res) {
@@ -37,8 +37,8 @@ router.post('/spaces', function(req, res) {
 	res.redirect('/spaces');
 });
 
-router.get('/signup', function(req, res) {
-  res.render('signup', { title: 'Sign Up', user: ''});
+router.get('/users/new', function(req, res) {
+  res.render('users/new', { title: 'Sign Up', user: ''});
 });
 
 router.post('/signup', function(req, res) {
