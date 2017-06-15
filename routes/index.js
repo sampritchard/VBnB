@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Space = require("../models/space").Space;
+var User = require("../models/user").User;
 
 
 /* GET home page. */
@@ -36,6 +37,19 @@ router.post('/spaces', function(req, res) {
 
 router.get('/signup', function(req, res) {
   res.render('signup', { title: 'Sign Up', user: ''});
+});
+
+router.post('/signup', function(req, res) {
+  var userNew = req.body.username;
+  var temp = new User({username: userNew});
+  console.log(userNew);
+  temp.save(function() {
+    if (userNew.length === 0) {
+      res.redirect('/signup');
+    } else {
+      res.redirect('/spaces');
+    };
+  });
 });
 
 module.exports = router;
