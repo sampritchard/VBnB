@@ -14,23 +14,40 @@ describe('Booking', function() {
 	// 		});
 	// });
 
-  beforeEach((done)=>{
-    mongoose.connection.collections.spaces.drop(()=>{
-      done();
-      });
-  });
+  // beforeEach((done)=>{
+  //   mongoose.connection.collections.spaces.drop(()=>{
+  //     done();
+  //     });
+  // });
 
 
   describe('Booking a space', ()=>{
+    console.log(2)
+      var space;
+    before( function(done){
+      space = new Space({name: 'The Best Place', price: 40, address: 'Fake 22'})
+      space.save()
+      console.log(1)
+      done();
+
+    })
+
 		it('has a default value of booked equals false', (done) => {
-			var space = new Space({name: 'The Best Place', price: 40, address: 'Fake 22'})
-			space.save()
-				.then(function() {
+
 					Space.find({}, function(err, spaces) {
-            expect(spaces[0].booked).to.equal(false)
+            console.log(spaces)
+            expect(spaces[spaces.length-1].booked).to.equal(false)
 						done();
-					});
+
 				});
 		});
-	});
+
+    it('can set booking to true', function(done){
+        console.log(3)
+          space.book().then( function() {
+          expect(spaces[spaces.length-1].booked).to.equal(true)
+          done();
+        })
+      })
+	  });
 });
