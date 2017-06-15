@@ -2,10 +2,22 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var spaceSchema = new Schema({
-  name: String,
-  description: String,
-  price: Number,
-  address: String
+  name: {
+        type: String,
+        required: true
+      },
+  description: {
+        type: String,
+        required: true
+      },
+  price: {
+        type: Number,
+        required: true
+      },
+  address: {
+        type: String,
+        required: true
+      }
 })
 
 var Space = mongoose.model('Space', spaceSchema);

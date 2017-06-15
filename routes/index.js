@@ -32,9 +32,12 @@ router.post('/spaces', function(req, res) {
 												price: req.body.price,
 												description: req.body.description});
   temp.save(function(err) {
-    if (err) return handleError(err);
+    if (err) {
+      console.log('Missing input', err);
+    } else {
+      res.redirect('/spaces');
+    };
   });
-	res.redirect('/spaces');
 });
 
 router.get('/users/new', function(req, res) {

@@ -20,11 +20,29 @@ describe('Spaces', function() {
 			});
 	});
 
+	describe('validating inputs', ()=> {
+	  it('validates if name is input', () => {
+	    var space = new Space();
+	    space.save(function(error) {
+	      expect.to.equal(error.errors['name'].message,
+	      'Path `name` is required.');
+
+	      error = space.validateSync();
+	      expect.to.equal(error.errors['name'].message,
+	        'Path `name` is required.');
+	      });
+	    });
+
+	  });
+
 	describe('Creating space', ()=>{
 		it('saves a space with an address', (done) => {
-			var space = new Space({name: 'The Best Place', price: 40, address: 'Fake 22'})	
+			var space = new Space({name: 'The Best Place',
+														 description: "Pretty",
+														 price: 40,
+														 address: 'Fake 22'})
 			space.save()
-				.then(function() {	
+				.then(function() {
 					Space.find({}, function(err, spaces) {
 						expect(spaces[0].address).to.equal('Fake 22')
 						expect(spaces[0].name).to.equal('The Best Place')
