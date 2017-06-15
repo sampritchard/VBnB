@@ -127,7 +127,7 @@ describe('VeBnB', function() {
 
   describe('listings page', function() {
     before(function(done) {
-      this.browser.visit('/spaces', done);
+      this.browser.visit('/spaces/all', done);
     });
 
     it('should be successful', function() {

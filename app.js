@@ -50,7 +50,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3001, function() {
+app.listen(3002, function() {
 	console.log('It\'s over 3000?!')
 });
 module.exports = app;
