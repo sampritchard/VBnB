@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Space = require("../models/space").Space;
+var User = require("../models/user").User;
 
 
 /* GET home page. */
