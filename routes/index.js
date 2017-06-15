@@ -9,6 +9,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'VeBnB', user: 'Sakitalotte' });
 });
 
+router.get('/spaces/new', function(req,res) {
+  res.render('spaces/new', { title: 'VeBnB', user: 'Sakitalotte' });
+});
+
 router.get('/spaces', function(req, res, next) {
 	var spaces = [];
 	Space.find({}, function(err,spaces) {
