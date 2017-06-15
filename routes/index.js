@@ -10,15 +10,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/spaces', function(req, res, next) {
-	addresses = [];
-  Space.find({}, function(err,spaces) {
+	var spaces = [];
+	Space.find({}, function(err,spaces) {
     spaces.forEach(function(space) {
-      if (space.address !== undefined) {
-      addresses.push(space.address);
+      if (space !== undefined) {
+        spaces.push(space);
       };
      })
-  }).then(function(data) {
-		res.render('spaces', { title: 'Listings', addresses: addresses, user: 'Sam'});
+	}).then(function(spaces) {
+			res.render('spaces', { title: 'Listings', spaces: spaces, user: 'Sam'}); 
 	}).catch(next);
 });
 
@@ -27,8 +27,10 @@ router.get('/confirm', function(req, res) {
 });
 
 router.post('/spaces', function(req, res) {
-	var addressNew = req.body.address;
-  var temp = new Space({address: addressNew});
+  var temp = new Space({name: req.body.name,
+												address: req.body.address,
+												price: req.body.price,
+												description: req.body.description});
   temp.save(function(err) {
     if (err) return handleError(err);
   });
