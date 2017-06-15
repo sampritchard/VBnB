@@ -18,7 +18,7 @@ describe('VeBnB', function() {
 
   describe ('sign up', function() {
     before(function(done) {
-      this.browser.visit('/signup', done);
+      this.browser.visit('/users/new', done);
     })
 
     it('should be successful', function() {
@@ -63,7 +63,7 @@ describe('VeBnB', function() {
 		before(function(done) {
 			this.browser.visit('/',done);
 		});
-	
+
 		describe('fills in space form', function() {
 			before(function(done) {
 				this.browser.fill('name', 'Love Shack')
@@ -76,7 +76,7 @@ describe('VeBnB', function() {
 			it('has name text', function() {
         this.browser.assert.text('ul', 'Name: Love Shack at SmoochStreet 22 (£20) Description: for young and old Choose')
       });
-    }); 
+    });
 	});
 
 
