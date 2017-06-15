@@ -9,14 +9,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/spaces', function(req, res, next) {
-	addresses = [];
-  Space.find({}, function(err,spaces) {
+	var spaces = [];
+	Space.find({}, function(err,spaces) {
     spaces.forEach(function(space) {
-      addresses.push(space.address);
-			console.log(space)
+      spaces.push(space);
      })
-  }).then(function(data) {
-		res.render('spaces', { title: 'Listings', addresses: addresses});
+	}).then(function(spaces) {
+			res.render('spaces', { title: 'Listings', spaces: spaces }); 
 	}).catch(next);
 });
 

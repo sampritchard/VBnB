@@ -7,12 +7,12 @@
   <body>
     <h1><%= title %></h1>
     <form method="get" action="/confirm">
-		<ul><% addresses.forEach(function(address) { %>
-			<li> <%= address %>
+		<ul><% spaces.forEach(function(space) { %>
+			<li> Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)
+				Description: <%= space.description %>
        <button type=submit>Choose</button>
 			<% }) %>
 		</ul>
-
     </form>
   </body>
 </html>
