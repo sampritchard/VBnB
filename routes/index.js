@@ -41,4 +41,17 @@ router.get('/users/new', function(req, res) {
   res.render('users/new', { title: 'Sign Up', user: ''});
 });
 
+router.post('/signup', function(req, res) {
+  var userNew = req.body.username;
+  var temp = new User({username: userNew});
+  console.log(userNew);
+  temp.save(function() {
+    if (userNew.length === 0) {
+      res.redirect('/signup');
+    } else {
+      res.redirect('/spaces');
+    };
+  });
+});
+
 module.exports = router;
