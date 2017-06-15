@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "mocha",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "nyc mocha"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -22,6 +22,7 @@
     "serve-favicon": "^2.4.3"
   },
   "devDependencies": {
+    "nyc": "^11.0.2",
     "zombie": "latest"
   }
 }
