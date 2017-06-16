@@ -6,7 +6,7 @@ var User = require("../models/user").User;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'VeBnB', user: 'Sakitalotte' });
+  res.render('users/new', { title: 'VeBnB', user: 'Sakitalotte' });
 });
 
 router.get('/spaces/new', function(req,res) {
@@ -30,7 +30,7 @@ router.post('/confirm', function(req, res) {
 	// res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
   console.log(req.body)
   Space.update({ _id :req.body.id }, {$set: {booked: true}}).then(function() {
-    res.redirect('/spaces');
+    res.redirect('/spaces/all');
   })
 
 });
