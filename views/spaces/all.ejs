@@ -20,10 +20,10 @@
 					Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)</br>
 					Description: <%= space.description %> Booked: <%= space.booked %>
 				 <button type=submit name ="id" value =<%= space.id%> >Request</button>
-				 <% } %>
-				<% }) %>
-				</div>
-		</p>
+				</div></br>
+			</p>
+			<% } %>
+		<% }) %>
     </form>
 		<form action='/spaces/requested'>
 			<button type='submit'>Go to Requests Page</button>

@@ -9,11 +9,11 @@ a {
 
 #left {
 	position: absolute;
-
 }
 
 #right {
-	position: relative;
+	position: absolute;
+	left: 200px;
 }
 
 #left, #right {
@@ -22,4 +22,6 @@ a {
 
 #container {
 	display: outline;
+	margin: 100px;
 }
+
