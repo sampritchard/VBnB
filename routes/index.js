@@ -13,7 +13,9 @@ router.use(session({
 
 router.post('/signin', function(req,res) {
   req.session.user = req.body.username;
+  req.session.status = req.body.status;
     console.log(req.session.user);
+    console.log(req.session.status);
   res.redirect('/spaces/all');
 });
 
@@ -26,17 +28,24 @@ router.get('/spaces/all', function(req, res, next) {
       };
      })
 	}).then(function(spaces) {
-			res.render('spaces/all', { title: 'Listings Available', spaces: spaces, user: req.session.user});
+			res.render('spaces/all', { title: 'Listings Available',
+                                spaces: spaces,
+                                user: req.session.user,
+                                status: req.session.status});
 	}).catch(next);
 });
 
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'VeBnB', user: req.session.user });
+  res.render('index', { title: 'VeBnB',
+                        user: req.session.user,
+                        status: req.session.status});
 });
 
 router.get('/spaces/new', function(req,res) {
-  res.render('spaces/new', { title: 'VeBnB', user: req.session.user });
+  res.render('spaces/new', { title: 'VeBnB',
+                             user: req.session.user,
+                             status: req.session.status });
 });
 
 
