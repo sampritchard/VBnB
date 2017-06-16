@@ -9,15 +9,20 @@
       <% include ../header %>
 
     <h1><%= title %></h1>
-    <form method="post" action="/confirm">
+		<h2> All available spaces, including requested ones, that have not yet been confirmed by the
+			owner. </h2>
+    <form method="post" action="/confirmrequest">
 		<ul><% spaces.forEach(function(space) { %>
       <% if(!space.booked) { %>
 			<li> Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)
 				Description: <%= space.description %> Booked: <%= space.booked %>
-       <button type=submit name ="id" value =<%= space.id%> >Choose</button>
+       <button type=submit name ="id" value =<%= space.id%> >Request</button>
        <% } %>
 			<% }) %>
 		</ul>
     </form>
+		<form action='/spaces/requested'>
+			<button type='submit'>Go to Requests Page</button>
+		</form>
   </body>
 </html>

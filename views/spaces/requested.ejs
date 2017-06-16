@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../layout %>
+  </head>
+
+  <body>
+
+      <% include ../header %>
+
+    <h1><%= title %></h1>
+		<h2> All spaces that have been requested by a guest, but not yet confirmed by the owner. </h2>
+    <form method="post" action="/confirmbooking">
+				<% spaces.forEach(function(space) { %>
+					<% if(!space.booked) { %>
+						<li> Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)
+							Description: <%= space.description %> Booked: <%= space.booked %>
+						 <button type=submit name ="id" value =<%= space.id%> >Confirm</button>
+					 <% } %>
+				<% }) %>
+		</ul>
+    </form>
+  </body>
+</html>
