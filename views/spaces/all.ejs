@@ -6,7 +6,7 @@
 
   <body>
 
-      <% include ../header %>
+		<!--  <% include ../header %> -->
 
     <h1><%= title %></h1>
 		<h2> All available spaces, including requested ones, that have not yet been confirmed by the
@@ -14,6 +14,9 @@
 
 		<form action='/spaces/requested'>
 			<button type='submit'>Go to Requests Page</button>
+		</form>
+		<form action='/spaces/new'>
+			<button type='submit'>Add a New Space</button>
 		</form>
 
     <form method="post" action="/confirmrequest">
