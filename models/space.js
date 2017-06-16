@@ -17,7 +17,12 @@ var spaceSchema = new Schema({
   address: {
         type: String,
         required: true
+      },
+  booked:  {
+        type: Boolean,
+        default: false
       }
+
 })
 
 var Space = mongoose.model('Space', spaceSchema);

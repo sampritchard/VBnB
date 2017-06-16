@@ -26,11 +26,17 @@ router.get('/spaces/all', function(req, res, next) {
 	}).catch(next);
 });
 
-router.get('/confirm', function(req, res) {
-	res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
+router.post('/confirm', function(req, res) {
+	// res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
+  console.log(req.body)
+  Space.update({ _id :req.body.id }, {$set: {booked: true}}).then(function() {
+    res.redirect('/spaces');
+  })
+
 });
 
 router.post('/spaces', function(req, res) {
+  console.log(req.body)
   var temp = new Space({name: req.body.name,
 												address: req.body.address,
 												price: req.body.price,
