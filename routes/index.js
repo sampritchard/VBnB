@@ -35,7 +35,7 @@ router.post('/confirmrequest', function(req, res) {
 router.post('/confirmbooking', function(req, res) {
 	console.log(req.body.id)
 	Space.update({ _id: req.body.id }, {$set: {booked: true}}).then(function() {
-		res.redirect('/spaces/requested');
+		res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
 	});
 });
 
