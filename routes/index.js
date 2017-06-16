@@ -6,7 +6,7 @@ var User = require("../models/user").User;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'VeBnB', user: 'Sakitalotte' });
+  res.render('users/new', { title: 'VeBnB', user: 'Sakitalotte' });
 });
 
 router.get('/spaces/new', function(req,res) {
@@ -22,15 +22,21 @@ router.get('/spaces/all', function(req, res, next) {
       };
      })
 	}).then(function(spaces) {
-			res.render('spaces/all', { title: 'Listings', spaces: spaces, user: 'Sakitalotte'});
+			res.render('spaces/all', { title: 'Listings Available', spaces: spaces, user: 'Sakitalotte'});
 	}).catch(next);
 });
 
-router.get('/confirm', function(req, res) {
-	res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
+router.post('/confirm', function(req, res) {
+	// res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
+  console.log(req.body)
+  Space.update({ _id :req.body.id }, {$set: {booked: true}}).then(function() {
+    res.redirect('/spaces/all');
+  })
+
 });
 
 router.post('/spaces', function(req, res) {
+  console.log(req.body)
   var temp = new Space({name: req.body.name,
 												address: req.body.address,
 												price: req.body.price,
