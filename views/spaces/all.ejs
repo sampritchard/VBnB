@@ -11,22 +11,26 @@
     <h1><%= title %></h1>
 		<h2> All available spaces, including requested ones, that have not yet been confirmed by the
 			owner. </h2>
+		
+		<form action='/spaces/requested'>
+			<button type='submit'>Go to Requests Page</button>
+		</form>
+
     <form method="post" action="/confirmrequest">
 		<% spaces.forEach(function(space) { %>
       <% if(!space.booked) { %>
 			<p id='container'> 
 				<div id='left'> <img src= <%=space.image%> height='80' width='80'></img></div>
-				<div id='right'>
+				<div id='middle'>
 					Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)</br>
 					Description: <%= space.description %> Booked: <%= space.booked %>
-				 <button type=submit name ="id" value =<%= space.id%> >Request</button>
+				</div>
+				<div id='right'> 
+					<button type=submit name ="id" value =<%= space.id%> >Request</button>
 				</div></br>
 			</p>
 			<% } %>
 		<% }) %>
     </form>
-		<form action='/spaces/requested'>
-			<button type='submit'>Go to Requests Page</button>
-		</form>
   </body>
 </html>

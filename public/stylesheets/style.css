@@ -11,12 +11,17 @@ a {
 	position: absolute;
 }
 
-#right {
+#middle {
 	position: absolute;
 	left: 200px;
 }
 
-#left, #right {
+#right {
+	position: absolute;
+	left: 900px;
+}
+
+#left, #middle, #right {
 	float: left;
 }
 
