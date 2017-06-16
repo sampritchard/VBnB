@@ -22,7 +22,10 @@ var spaceSchema = new Schema({
         type: Boolean,
         default: false
       }
-
+	requested: {
+				type: Boolean,
+				default: false
+	}
 })
 
 var Space = mongoose.model('Space', spaceSchema);

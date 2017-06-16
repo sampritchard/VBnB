@@ -22,7 +22,7 @@ router.get('/spaces/all', function(req, res, next) {
       };
      })
 	}).then(function(spaces) {
-			res.render('spaces/all', { title: 'Listings', spaces: spaces, user: 'Sakitalotte'});
+			res.render('spaces/all', { title: 'Listings Available', spaces: spaces, user: 'Sakitalotte'});
 	}).catch(next);
 });
 
