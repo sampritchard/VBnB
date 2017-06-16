@@ -58,6 +58,7 @@ router.get('/spaces/requested', function(req, res, next) {
 	Space.find({requested: true}, function(err,spaces) {
 		requestedSpaces = spaces;
   	console.log(spaces); 
+		setTimeout(function() {}, 30000);
 	}).then(function(spaces) {
 		res.render('spaces/requested', { title: 'Listings Requested', spaces: requestedSpaces, user: 'Sakitalotte'})
 	}).catch(next);
