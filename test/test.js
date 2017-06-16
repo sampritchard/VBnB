@@ -58,7 +58,7 @@ describe('VeBnB', function() {
 
   describe('home page', function() {
     before(function(done) {
-      this.browser.visit('/', done);
+      this.browser.visit('/spaces/new', done);
     });
 
     it('should be successful', function() {
@@ -74,7 +74,7 @@ describe('VeBnB', function() {
 
 	describe('visit home page', function() {
 		before(function(done) {
-			this.browser.visit('/',done);
+			this.browser.visit('/spaces/new',done);
 		});
 
 		describe('fills in space form', function() {
@@ -85,8 +85,8 @@ describe('VeBnB', function() {
 										.fill('description', 'for young and old')
 				this.browser.pressButton('Enter', done);
 			});
-			
-						
+
+
 			it('has name text', function() {
         var pageBody = this.browser.text();
 				expect(pageBody).to.have.string('Love Shack')
@@ -94,13 +94,13 @@ describe('VeBnB', function() {
 				expect(pageBody).to.have.string('20')
 				expect(pageBody).to.have.string('for young and old')
 			});
-    }); 
+    });
 	});
 
 
 	describe('choose button' , function() {
 		before(function(done) {
-      this.browser.visit('/', done);
+      this.browser.visit('/spaces/new', done);
     });
 
     it('has a Choose button', function() {
@@ -127,7 +127,7 @@ describe('VeBnB', function() {
 
   describe('listings page', function() {
     before(function(done) {
-      this.browser.visit('/spaces', done);
+      this.browser.visit('/spaces/all', done);
     });
 
     it('should be successful', function() {

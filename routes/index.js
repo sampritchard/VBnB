@@ -9,7 +9,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'VeBnB', user: 'Sakitalotte' });
 });
 
-router.get('/spaces', function(req, res, next) {
+router.get('/spaces/new', function(req,res) {
+  res.render('spaces/new', { title: 'VeBnB', user: 'Sakitalotte' });
+});
+
+router.get('/spaces/all', function(req, res, next) {
 	var spaces = [];
 	Space.find({}, function(err,spaces) {
     spaces.forEach(function(space) {
@@ -18,7 +22,7 @@ router.get('/spaces', function(req, res, next) {
       };
      })
 	}).then(function(spaces) {
-			res.render('spaces', { title: 'Listings', spaces: spaces, user: 'Sakitalotte'});
+			res.render('spaces/all', { title: 'Listings', spaces: spaces, user: 'Sakitalotte'});
 	}).catch(next);
 });
 
@@ -35,7 +39,7 @@ router.post('/spaces', function(req, res) {
     if (err) {
       console.log('Missing input', err);
     } else {
-      res.redirect('/spaces');
+      res.redirect('spaces/all');
     };
   });
 });
@@ -52,7 +56,7 @@ router.post('/signup', function(req, res) {
     if (userNew.length === 0) {
       res.redirect('/signup');
     } else {
-      res.redirect('/spaces');
+      res.redirect('spaces/all');
     };
   });
 });
