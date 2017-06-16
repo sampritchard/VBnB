@@ -2,15 +2,19 @@ var express = require('express');
 var router = express.Router();
 var Space = require("../models/space").Space;
 var User = require("../models/user").User;
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
+router.use(session({
+  saveUninitialized: false,
+  resave: false,
+  secret: 'shh, very secret'
+}));
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('users/new', { title: 'VeBnB', user: 'Sakitalotte' });
-});
-
-router.get('/spaces/new', function(req,res) {
-  res.render('spaces/new', { title: 'VeBnB', user: 'Sakitalotte' });
+router.post('/signin', function(req,res) {
+  req.session.user = req.body.username;
+    console.log(req.session.user);
+  res.redirect('/spaces/all');
 });
 
 router.get('/spaces/all', function(req, res, next) {
@@ -22,9 +26,19 @@ router.get('/spaces/all', function(req, res, next) {
       };
      })
 	}).then(function(spaces) {
-			res.render('spaces/all', { title: 'Listings Available', spaces: spaces, user: 'Sakitalotte'});
+			res.render('spaces/all', { title: 'Listings Available', spaces: spaces, user: req.session.user});
 	}).catch(next);
 });
+
+
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'VeBnB', user: req.session.user });
+});
+
+router.get('/spaces/new', function(req,res) {
+  res.render('spaces/new', { title: 'VeBnB', user: req.session.user });
+});
+
 
 router.post('/confirm', function(req, res) {
 	// res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
@@ -54,10 +68,10 @@ router.get('/users/new', function(req, res) {
   res.render('users/new', { title: 'Sign Up', user: ''});
 });
 
+
 router.post('/signup', function(req, res) {
   var userNew = req.body.username;
   var temp = new User({username: userNew});
-  console.log(userNew);
   temp.save(function() {
     if (userNew.length === 0) {
       res.redirect('/signup');

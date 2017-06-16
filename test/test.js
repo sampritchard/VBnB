@@ -18,10 +18,31 @@ describe('VeBnB', function() {
     this.browser = new Browser({ site: 'http://localhost:8080' });
   });
 
+	describe('homepage', function() {
+		before(function(done) {
+			this.browser.visit('/', done);
+		});
+
+		it('should be successful', function() {
+      this.browser.assert.success();
+    });
+
+		it('redirects to spaces page if sign in is valid', function() {
+			before(function(done) {
+				this.browser.fill('username', 'Sam').then(function(){
+					this.browser.pressButton('Sign In')
+				});
+				this.browser.assert.text('body', 'Hello Sam')
+			});
+		});
+
+	});
+
+
   describe ('sign up', function() {
     before(function(done) {
       this.browser.visit('/users/new', done);
-    })
+    });
 
     it('should be successful', function() {
       this.browser.assert.success();
@@ -72,7 +93,7 @@ describe('VeBnB', function() {
     });
 	});
 
-	describe('visit home page', function() {
+	describe('list new space', function() {
 		before(function(done) {
 			this.browser.visit('/spaces/new',done);
 		});
