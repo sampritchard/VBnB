@@ -9,7 +9,9 @@
     <%= title %>
     <form action='/signin' method='post'>
 				<label for='signin'> Sign in:
-					<input type='text' name='username'>
+					<input type='text' name='username'><br>
+          <input type='radio' name='status' value='Owner'>Owner<br>
+          <input type='radio' name='status' value='Guest'>Guest<br>
 					<button type=submit>Sign In</button>
 				</label><br>
 			</form>
