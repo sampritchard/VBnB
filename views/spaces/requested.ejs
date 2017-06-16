@@ -13,12 +13,19 @@
     <form method="post" action="/confirmbooking">
 				<% spaces.forEach(function(space) { %>
 					<% if(!space.booked) { %>
-						<li> Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)
-							Description: <%= space.description %> Booked: <%= space.booked %>
-						 <button type=submit name ="id" value =<%= space.id%> >Confirm</button>
+            <p id='container'>
+      				<div id='left'> <img src= <%=space.image%> height='80' width='80'></img></div>
+      				<div id='middle'>
+                 Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)
+							   Description: <%= space.description %>
+            </div>
+            <div id='right'>
+						        <button type=submit name ="id" value =<%= space.id%> >Confirm</button>
+            </div> </br>
+          </p>
 					 <% } %>
 				<% }) %>
-		</ul>
+
     </form>
   </body>
 </html>
