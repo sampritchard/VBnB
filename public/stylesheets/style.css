@@ -6,3 +6,20 @@ body {
 a {
   color: #00B7FF;
 }
+
+#left {
+	position: absolute;
+
+}
+
+#right {
+	position: relative;
+}
+
+#left, #right {
+	float: left;
+}
+
+#container {
+	display: outline;
+}
