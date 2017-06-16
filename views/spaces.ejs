@@ -13,7 +13,7 @@
 		<ul><% spaces.forEach(function(space) { %>
 			<li> Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)
 				Description: <%= space.description %> Booked: <%= space.booked %>
-       <button type=submit name="a">Choose</button>
+       <button type=submit name ="id" value =<%= space.id%> >Choose</button>
 			<% }) %>
 		</ul>
     </form>

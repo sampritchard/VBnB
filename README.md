@@ -1,9 +1,10 @@
 Packages used:
 - Database Stucture
-    MongoDB
-    Mongoose
+    - MongoDB
+    - Mongoose
 - Testing
     - Chai
+    - Istanbul
     - Mocha
     - Zombie
 - Server

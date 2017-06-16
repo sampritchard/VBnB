@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Space = require("../models/space").Space;
+var User = require("../models/user").User;
 
 
 /* GET home page. */
@@ -23,26 +24,43 @@ router.get('/spaces', function(req, res, next) {
 
 router.post('/confirm', function(req, res) {
 	// res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
-  console.log(req.body.a)
-  Space.update({name: "The Best Place"}, {$set: {booked: true}}).then(function() {
+  console.log(req.body)
+  Space.update({ _id :req.body.id }, {$set: {booked: true}}).then(function() {
     res.redirect('/spaces');
   })
 
 });
 
 router.post('/spaces', function(req, res) {
+  console.log(req.body)
   var temp = new Space({name: req.body.name,
 												address: req.body.address,
 												price: req.body.price,
 												description: req.body.description});
   temp.save(function(err) {
-    if (err) return handleError(err);
+    if (err) {
+      console.log('Missing input', err);
+    } else {
+      res.redirect('/spaces');
+    };
   });
-	res.redirect('/spaces');
 });
 
 router.get('/users/new', function(req, res) {
   res.render('users/new', { title: 'Sign Up', user: ''});
+});
+
+router.post('/signup', function(req, res) {
+  var userNew = req.body.username;
+  var temp = new User({username: userNew});
+  console.log(userNew);
+  temp.save(function() {
+    if (userNew.length === 0) {
+      res.redirect('/signup');
+    } else {
+      res.redirect('/spaces');
+    };
+  });
 });
 
 module.exports = router;

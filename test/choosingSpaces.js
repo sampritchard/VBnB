@@ -24,7 +24,7 @@ describe('Booking', function() {
   describe('Booking a space', ()=>{
       var space;
     before( function(done){
-      space = new Space({name: 'The Best Place', price: 40, address: 'Fake 22'})
+      space = new Space({name: 'TEST DO NOT TURN BOOKING TO TRUE EVER!!!!!!!!!!... please', price: 40, address: 'Fake 22'})
       space.save()
       done();
 
@@ -39,12 +39,6 @@ describe('Booking', function() {
 				});
 		});
 
-    // it('can set booking to true', function(done){
-    //     console.log(3)
-    //       space.book().then( function() {
-    //       expect(spaces[spaces.length-1].booked).to.equal(true)
-    //       done();
-    //     })
-    //   })
+
 	  });
 });
