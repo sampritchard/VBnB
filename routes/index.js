@@ -14,8 +14,6 @@ router.use(session({
 router.post('/signin', function(req,res) {
   req.session.user = req.body.username;
   req.session.status = req.body.status;
-    console.log(req.session.user);
-    console.log(req.session.status);
   res.redirect('/spaces/all');
 });
 
