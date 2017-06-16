@@ -82,7 +82,7 @@ router.get('/spaces/requested', function(req, res, next) {
   	console.log(spaces);
 		setTimeout(function() {}, 30000);
 	}).then(function(spaces) {
-		res.render('spaces/requested', { title: 'Listings Requested', spaces: requestedSpaces, user: 'Sakitalotte'})
+		res.render('spaces/requested', { title: 'Listings Requested', spaces: requestedSpaces, user: req.session.user, status: req.session.status})
 	}).catch(next);
 });
 
