@@ -15,6 +15,9 @@
 		<form action='/spaces/requested'>
 			<button type='submit'>Go to Requests Page</button>
 		</form>
+		<form action='/spaces/new'>
+			<button type='submit'>Add New Space</button>
+		</form>
 
     <form method="post" action="/confirmrequest">
 		<% spaces.forEach(function(space) { %>
@@ -22,7 +25,7 @@
 			<p id='container'>
 				<div id='left'> <img src= <%=space.image%> height='80' width='80'></img></div>
 				<div id='middle'>
-					Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)</br>
+					<%= space.name %> at <%= space.address %> (£<%= space.price %>)</br>
 					Description: <%= space.description %> 
 				</div>
 				<div id='right'>
