@@ -41,7 +41,8 @@ describe('Spaces', function() {
 			var space = new Space({name: 'The Best Place',
 														 description: "Pretty",
 														 price: 40,
-														 address: 'Fake 22'})
+														 address: 'Fake 22',
+													 	 image:'https://static.pexels.com/photos/186077/pexels-photo-186077.jpeg'})
 
 			space.save()
 				.then(function() {
@@ -49,6 +50,9 @@ describe('Spaces', function() {
 						expect(spaces[0].address).to.equal('Fake 22')
 						expect(spaces[0].name).to.equal('The Best Place')
 						expect(spaces[0].price).to.equal(40)
+						expect(spaces[0].image).to.equal('https://static.pexels.com/photos/186077/pexels-photo-186077.jpeg')
+						expect(spaces[0].booked).to.equal(false)
+						expect(spaces[0].requested).to.equal(false)
 						done();
 					});
 				});

@@ -64,7 +64,8 @@ router.post('/spaces', function(req, res) {
   var temp = new Space({name: req.body.name,
 												address: req.body.address,
 												price: req.body.price,
-												description: req.body.description});
+												description: req.body.description,
+                        image: req.body.image});
   temp.save(function(err) {
     if (err) {
       console.log('Missing input', err);

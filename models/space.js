@@ -25,6 +25,10 @@ var spaceSchema = new Schema({
 	requested: {
 				type: Boolean,
 				default: false
+	},
+	image: {
+				type: String,
+				default: 'https://activerain-store.s3.amazonaws.com/image_store/uploads/agents/kenttemple/files/bigstock-Cartoon-house-256406061.jpg'
 	}
 })
 

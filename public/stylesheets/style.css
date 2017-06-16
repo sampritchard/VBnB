@@ -6,3 +6,27 @@ body {
 a {
   color: #00B7FF;
 }
+
+#left {
+	position: absolute;
+}
+
+#middle {
+	position: absolute;
+	left: 200px;
+}
+
+#right {
+	position: absolute;
+	left: 900px;
+}
+
+#left, #middle, #right {
+	float: left;
+}
+
+#container {
+	display: outline;
+	margin: 100px;
+}
+
