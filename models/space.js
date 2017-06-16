@@ -21,7 +21,7 @@ var spaceSchema = new Schema({
   booked:  {
         type: Boolean,
         default: false
-      }
+      },
 	requested: {
 				type: Boolean,
 				default: false
