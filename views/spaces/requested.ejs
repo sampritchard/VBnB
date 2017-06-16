@@ -9,14 +9,13 @@
       <% include ../header %>
 
     <h1><%= title %></h1>
-		<h2> All available spaces, including requested ones, that have not yet been confirmed by the
-			owner. </h2>
-    <form method="post" action="/confirmrequest">
+		<h2> All spaces that have been requested by a guest, but not yet confirmed by the owner. </h2>
+    <form method="post" action="/confirmbooking">
 		<ul><% spaces.forEach(function(space) { %>
       <% if(!space.booked) { %>
 			<li> Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)
 				Description: <%= space.description %> Booked: <%= space.booked %>
-       <button type=submit name ="id" value =<%= space.id%> >Request</button>
+       <button type=submit name ="id" value =<%= space.id%> >Confirm</button>
        <% } %>
 			<% }) %>
 		</ul>

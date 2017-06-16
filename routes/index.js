@@ -26,17 +26,20 @@ router.get('/spaces/all', function(req, res, next) {
 	}).catch(next);
 });
 
-router.post('/confirm', function(req, res) {
-	// res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
-  console.log(req.body)
-  Space.update({ _id :req.body.id }, {$set: {booked: true}}).then(function() {
+router.post('/confirmrequest', function(req, res) {
+  Space.update({ _id :req.body.id }, {$set: {requested: true}}).then(function() {
     res.redirect('/spaces/all');
   })
+});
 
+router.post('/confirmbooking', function(req, res) {
+	console.log(req.body.id)
+	Space.update({ _id: req.body.id }, {$set: {booked: true}}).then(function() {
+		res.redirect('/spaces/requested');
+	});
 });
 
 router.post('/spaces', function(req, res) {
-  console.log(req.body)
   var temp = new Space({name: req.body.name,
 												address: req.body.address,
 												price: req.body.price,
@@ -48,6 +51,16 @@ router.post('/spaces', function(req, res) {
       res.redirect('spaces/all');
     };
   });
+});
+
+router.get('/spaces/requested', function(req, res, next) {
+	var requestedSpaces = [];
+	Space.find({requested: true}, function(err,spaces) {
+		requestedSpaces = spaces;
+  	console.log(spaces); 
+	}).then(function(spaces) {
+		res.render('spaces/requested', { title: 'Listings Requested', spaces: requestedSpaces, user: 'Sakitalotte'})
+	}).catch(next);
 });
 
 router.get('/users/new', function(req, res) {
