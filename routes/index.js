@@ -21,8 +21,13 @@ router.get('/spaces', function(req, res, next) {
 	}).catch(next);
 });
 
-router.get('/confirm', function(req, res) {
-	res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
+router.post('/confirm', function(req, res) {
+	// res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
+  console.log(req.body.a)
+  Space.update({name: "The Best Place"}, {$set: {booked: true}}).then(function() {
+    res.redirect('/spaces');
+  })
+
 });
 
 router.post('/spaces', function(req, res) {

@@ -9,11 +9,11 @@
       <% include ./header %>
 
     <h1><%= title %></h1>
-    <form method="get" action="/confirm">
+    <form method="post" action="/confirm">
 		<ul><% spaces.forEach(function(space) { %>
 			<li> Name: <%= space.name %> at <%= space.address %> (£<%= space.price %>)
-				Description: <%= space.description %>
-       <button type=submit>Choose</button>
+				Description: <%= space.description %> Booked: <%= space.booked %>
+       <button type=submit name="a">Choose</button>
 			<% }) %>
 		</ul>
     </form>
