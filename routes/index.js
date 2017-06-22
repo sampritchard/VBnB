@@ -12,9 +12,17 @@ router.use(session({
 }));
 
 router.post('/signin', function(req,res) {
-  req.session.user = req.body.username;
-  req.session.status = req.body.status;
-  res.redirect('/spaces/all');
+  var user;
+  User.findOne({username: req.body.username}, function(err,obj) {
+    user = obj;
+    if (user != null) {
+      req.session.user = req.body.username;
+      req.session.status = req.body.status;
+      res.redirect('/spaces/all');
+    } else {
+      res.redirect('/');
+    };
+  });
 });
 
 router.get('/spaces/all', function(req, res, next) {
@@ -56,7 +64,9 @@ router.post('/confirmrequest', function(req, res) {
 router.post('/confirmbooking', function(req, res) {
 	console.log(req.body.id)
 	Space.update({ _id: req.body.id }, {$set: {booked: true}}).then(function() {
-		res.render('confirm', { title: 'Confirmation', user: 'Sakitalotte'});
+		res.render('confirm', { title: 'Confirmation',
+                            user: req.session.user,
+                            status: req.session.status });
 	});
 });
 
@@ -82,7 +92,10 @@ router.get('/spaces/requested', function(req, res, next) {
   	console.log(spaces);
 		setTimeout(function() {}, 30000);
 	}).then(function(spaces) {
-		res.render('spaces/requested', { title: 'Listings Requested', spaces: requestedSpaces, user: req.session.user, status: req.session.status})
+		res.render('spaces/requested', { title: 'Listings Requested',
+                                     spaces: requestedSpaces,
+                                     user: req.session.user,
+                                     status: req.session.status})
 	}).catch(next);
 });
 
@@ -94,13 +107,14 @@ router.get('/users/new', function(req, res) {
 router.post('/signup', function(req, res) {
   var userNew = req.body.username;
   var temp = new User({username: userNew});
-  temp.save(function() {
-    if (userNew.length === 0) {
-      res.redirect('/signup');
-    } else {
-      res.redirect('spaces/all');
-    };
+  temp.save().
+    then(function() {
+      if (userNew.length === 0) {
+        res.redirect('/signup');
+      } else {
+        res.redirect('spaces/all');
+      };
+    });
   });
-});
 
 module.exports = router;

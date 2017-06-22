@@ -6,7 +6,7 @@
 
   <body>
 
-		<!--  <% include ../header %> -->
+		 <% include ../header %>
 
     <h1><%= title %></h1>
 		<h2> All available spaces, including requested ones, that have not yet been confirmed by the
@@ -26,7 +26,7 @@
 				<div id='left'> <img src= <%=space.image%> height='80' width='80'></img></div>
 				<div id='middle'>
 					<%= space.name %> at <%= space.address %> (£<%= space.price %>)</br>
-					Description: <%= space.description %> 
+					Description: <%= space.description %>
 				</div>
 				<div id='right'>
 					<button type=submit name ="id" value =<%= space.id%> >Request</button>
