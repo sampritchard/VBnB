@@ -6,10 +6,11 @@
   </head>
   <body>
     <% include ./header %><br>
-    <%= title %>
+    <h1><%= title %></h1>
     <form action='/signin' method='post'>
-				<label for='signin'> Sign in:
-					<input type='text' name='username'><br>
+				<label for='signin'> Sign in<br>
+					Username:<input type='text' name='username'><br>
+          Password:<input type='password' name='password'><br>
           <input type='radio' name='status' value='Owner'>Owner<br>
           <input type='radio' name='status' value='Guest'>Guest<br>
 					<button type=submit>Sign In</button>

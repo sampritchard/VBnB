@@ -13,7 +13,7 @@ router.use(session({
 
 router.post('/signin', function(req,res) {
   var user;
-  User.findOne({username: req.body.username}, function(err,obj) {
+  User.findOne({username: req.body.username, password: req.body.password}, function(err,obj) {
     user = obj;
     if (user != null) {
       req.session.user = req.body.username;
@@ -106,7 +106,8 @@ router.get('/users/new', function(req, res) {
 
 router.post('/signup', function(req, res) {
   var userNew = req.body.username;
-  var temp = new User({username: userNew});
+  var password = req.body.password;
+  var temp = new User({username: userNew, password: password});
   temp.save().
     then(function() {
       if (userNew.length === 0) {
