@@ -89,8 +89,11 @@ describe('VeBnB', function() {
       this.browser.assert.text('title', 'VeBnB');
     });
     it('should have an enter button',function() {
-      this.browser.assert.text('button', 'Enter');
+      this.browser.assert.element('#newspace', 'Enter');
     });
+		it('should have a logout button',function() {
+			this.browser.assert.element('#logout', 'Logout');
+		});
 	});
 
 	describe('list new space', function() {
