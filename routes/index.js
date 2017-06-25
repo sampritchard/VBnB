@@ -106,7 +106,8 @@ router.get('/users/new', function(req, res) {
 
 router.post('/signup', function(req, res) {
   var userNew = req.body.username;
-  var temp = new User({username: userNew});
+  var password = req.body.password;
+  var temp = new User({username: userNew, password: password});
   temp.save().
     then(function() {
       if (userNew.length === 0) {
