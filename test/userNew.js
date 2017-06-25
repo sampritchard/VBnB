@@ -31,14 +31,26 @@ describe('validating inputs', ()=> {
       error = user.validateSync();
       expect.to.equal(error.errors['username'].message,
         'Path `name` is required.');
-      });
     });
-
   });
+
+  it('validates if password is input', () => {
+    var user = new User();
+    user.save(function(error) {
+      expect.to.equal(error.errors['password'].message,
+      'Path `password` is required.');
+
+      error = user.validateSync();
+      expect.to.equal(error.errors['password'].message,
+        'Path `password` is required.');
+    });
+  });
+
+});
 
   describe('new user', ()=>{
     it('saves new user to user database', (done) => {
-      var user = new User({username: 'Voldemort'});
+      var user = new User({username: 'Voldemort', password: 'xxx'});
       user.save()
         .then(function() {
           User.find({}, function(err, users) {
