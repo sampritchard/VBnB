@@ -13,7 +13,7 @@ router.use(session({
 
 router.post('/signin', function(req,res) {
   var user;
-  User.findOne({username: req.body.username}, function(err,obj) {
+  User.findOne({username: req.body.username, password: req.body.password}, function(err,obj) {
     user = obj;
     if (user != null) {
       req.session.user = req.body.username;
