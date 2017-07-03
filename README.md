@@ -10,6 +10,16 @@ Pritchard et al.(2017), Retro - Address to Sakitalotte, Couch, Makers
 
 ```
 
+To run:
+
+Clone this repo:
+
+```
+node app.js
+```
+
+Visit localhost:3002
+
 ### Packages used:
 - Database Stucture
     - MongoDB
